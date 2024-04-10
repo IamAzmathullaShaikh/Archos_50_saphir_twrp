@@ -1,0 +1,1 @@
+LOCAL_PATH := device/archos/fq5c62wt_aks
