@@ -1,2 +1,0 @@
-add_lunch_combo twrp_fq5c62wt_aks-userdebug
-add_lunch_combo twrp_fq5c62wt_aks-eng
