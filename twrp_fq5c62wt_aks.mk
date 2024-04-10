@@ -1,18 +1,46 @@
-# Inherit from those products. Most specific first.
-$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+#
+# Copyright (C) 2024 The Android Open Source Project
+# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 
-# Inherit from device
-$(call inherit-product, device/archos/fq5c62wt_aks/device.mk)
+DEVICE_PATH := device/qualcomm/fq5c62wt_aks
 
-# Inherit some common twrp stuff.
+# Configure base.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+
+# Configure core_64_bit_only.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+
+# Configure gsi_keys.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
+# Configure Virtual A/B
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+
+# Configure SDCard replacement functionality
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
+# Configure twrp
 $(call inherit-product, vendor/twrp/config/common.mk)
-$(call inherit-product, vendor/twrp/config/gsm.mk)
+
+# Inherit from fq5c62wt_aks device
+$(call inherit-product, $(DEVICE_PATH)/device.mk)
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(DEVICE_PATH)
+
+# Release name
+PRODUCT_RELEASE_NAME := fq5c62wt_aks
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := fq5c62wt_aks
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := ac50sa
-PRODUCT_NAME := twrp_ac50sa
-PRODUCT_BRAND := archos 
-PRODUCT_MODEL := Archos 50 Saphir
-PRODUCT_MANUFACTURER := Archos 
+PRODUCT_DEVICE := fq5c62wt_aks
+PRODUCT_NAME := twrp_fq5c62wt_aks
+PRODUCT_BRAND := fq5c62wt_aks
+PRODUCT_MODEL := fq5c62wt_aks
+PRODUCT_MANUFACTURER := fq5c62wt_aks
