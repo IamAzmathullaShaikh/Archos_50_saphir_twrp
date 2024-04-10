@@ -10,9 +10,6 @@ DEVICE_PATH := device/archos/fq5c62wt_aks
 # Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# Configure gsi_keys.mk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
-
 # Configure twrp
 $(call inherit-product, vendor/twrp/config/common.mk)
 
